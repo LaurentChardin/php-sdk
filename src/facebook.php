@@ -167,6 +167,11 @@ class Facebook
   protected $baseDomain = '';
 
   /**
+   * Base path for the Cookie.
+   */
+  protected $basePath = '/';
+  
+  /**
    * Indicates if the CURL based @ syntax for file uploads is enabled.
    */
   protected $fileUploadSupport = false;
@@ -273,6 +278,25 @@ class Facebook
     return $this->baseDomain;
   }
 
+  /**
+   * Set the base path for the Cookie.
+   *
+   * @param String $path the base path
+   */
+  public function setBasePath($path) {
+    $this->basePath = $path;
+    return $this;
+  }
+
+  /**
+   * Get the base path for the Cookie.
+   *
+   * @return String the base path
+   */
+  public function getBasePath() {
+    return $this->basePath;
+  }
+  
   /**
    * Set the file upload support status.
    *
@@ -657,6 +681,7 @@ class Facebook
     $value = 'deleted';
     $expires = time() - 3600;
     $domain = $this->getBaseDomain();
+    $path = $this->getBasePath();
     if ($session) {
       $value = '"' . http_build_query($session, null, '&') . '"';
       if (isset($session['base_domain'])) {
@@ -682,7 +707,7 @@ class Facebook
     // environment
     // @codeCoverageIgnoreStart
     } else {
-      setcookie($cookieName, $value, $expires, '/', $domain);
+      setcookie($cookieName, $value, $expires, $path, $domain);
     }
     // @codeCoverageIgnoreEnd
   }
