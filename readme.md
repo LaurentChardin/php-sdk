@@ -67,3 +67,11 @@ We are including this in the open source repository to assure you of our
 commitment to quality, but also with the hopes that you will contribute back to
 help keep it stable. The easiest way to do so is to file bugs and include a
 test case.
+
+
+Cookie Path patch
+-----------------
+
+This patch introduces Cookie Path control when you want to handle multiple 
+separated Facebook sessions using the same domain (host) in different subfolders,
+each subfolder having its own Facebook application for example.
