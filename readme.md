@@ -74,10 +74,3 @@ test case.
 The tests can be executed by using this command from the base directory:
 
     phpunit --stderr --bootstrap tests/bootstrap.php tests/tests.php
-
-Cookie Path patch
------------------
-
-This patch introduces Cookie Path control when you want to handle multiple 
-separated Facebook sessions using the same domain (host) in different subfolders,
-each subfolder having its own Facebook application for example.
